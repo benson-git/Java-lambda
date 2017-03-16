@@ -34,11 +34,64 @@ param1 -> {
 ```
 param1 -> statment
 ```
+
+expression lambda和statement lambda的区别是，expression lambda不需要
+写return关键字，Java runtime会将表达式的结果作为返回值返回，而statement lambda是
+写在{}中的表达式，需要使用return关键字，比如：
+```
+// expression lambda
+Comparator<String> comp1 = 
+  (first, second) -> Integer.compare(first.length(), second.length());
+ 
+// statement lambda
+Comparator<String> comp2 = (first, second) -> 
+  { return Integer.compare(first.length(), second.length());};
+```
+
 使用Method Reference:
 ```
 List<String> lowercaseNames = names.stream().map(String::toLowerCase).collect(Collectors.toList());
 ```
 ---
+如果将lambda表达式的参数作为参数传递给一个方法，他们的执行效果是相同的，则该lambda表达式
+可以使用Method Reference表达，以下两种方式是等价的：
+```java
+(x) -> System.out.println(x)
+//等价于：
+System.out::println
+```
+其中System.out::println被称为Method Reference。
+Method Reference主要有三种形式：
+object::instanceMethod
+Class::staticMethod
+Class::instanceMethod
+对于前两种方式，对应的lambda表达式的参数和method的参数是一致的，比如：
+```
+System.out::println
+(x) -> System.out.println(x)
+ 
+Math::pow 
+(x, y) -> Math.pow(x, y)
+```
+对于第三种方式，对应的lambda表达式的语句体中，第一个参数作为对象，调用method，将其它参数
+作为method的参数，比如：
+```
+String::compareToIgnoreCase
+(s1, s2) -> s1.compareToIgnoreCase(s2)
+```
+使用Constructor Reference:
+Constructor Reference与Method Reference类似，只不过是特殊的method：new，具体调用的是哪个构造函数，由上下文环境决定，比如：
+```
+List<String> labels = ...;
+Stream<Button> stream = labels.stream().map(Button::new);
+```
+Button::new等价于(x) -> Button(x)，所以调用的构造函数是：Button(x);
+除了创建单个对象，也可以创建对象数组，如下面两种方式等价：
+```
+int[]::new
+(x) -> new int[x]
+```
+
 
 函数式接口（Functional Interface）:
 所谓的函数式接口，当然首先是一个接口，然后就是在这个接口里面只能有一个抽象方法。这种类型的接口也称为SAM接口，即Single Abstract Method interfaces.
