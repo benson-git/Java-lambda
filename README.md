@@ -2,7 +2,15 @@
 
 lambda表达式可以这样定义：一段带有输入参数的可执行语句块。
 
-
+lambda表达式的一般语法:
+```java
+(Type1 param1, Type2 param2, ..., TypeN paramN) -> {
+  statment1;
+  statment2;
+  //.............
+  return statmentM;
+}
+```
 函数式接口（Functional Interface）:
 所谓的函数式接口，当然首先是一个接口，然后就是在这个接口里面只能有一个抽象方法。这种类型的接口也称为SAM接口，即Single Abstract Method interfaces.
 
