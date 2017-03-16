@@ -1,5 +1,6 @@
 # Java-lambda
 
+---
 lambda表达式可以这样定义：一段带有输入参数的可执行语句块。
 
 lambda表达式的一般语法:
@@ -11,6 +12,34 @@ lambda表达式的一般语法:
   return statmentM;
 }
 ```
+绝大多数情况，编译器都可以从上下文环境中推断出lambda表达式的参数类型, 参数类型省略。 这样lambda表达式就变成了：
+```
+(param1,param2, ..., paramN) -> {
+  statment1;
+  statment2;
+  //.............
+  return statmentM;
+}
+```
+当lambda表达式的参数个数只有一个，可以省略小括号。lambda表达式简写为:
+```
+param1 -> {
+  statment1;
+  statment2;
+  //.............
+  return statmentM;
+}
+```
+当lambda表达式只包含一条语句时，可以省略大括号、return和语句结尾的分号。lambda表达式简化为:
+```
+param1 -> statment
+```
+使用Method Reference:
+```
+List<String> lowercaseNames = names.stream().map(String::toLowerCase).collect(Collectors.toList());
+```
+---
+
 函数式接口（Functional Interface）:
 所谓的函数式接口，当然首先是一个接口，然后就是在这个接口里面只能有一个抽象方法。这种类型的接口也称为SAM接口，即Single Abstract Method interfaces.
 
