@@ -47,12 +47,13 @@ Comparator<String> comp1 =
 Comparator<String> comp2 = (first, second) -> 
   { return Integer.compare(first.length(), second.length());};
 ```
+Method Reference
+---
 
 使用Method Reference:
 ```
 List<String> lowercaseNames = names.stream().map(String::toLowerCase).collect(Collectors.toList());
 ```
----
 如果将lambda表达式的参数作为参数传递给一个方法，他们的执行效果是相同的，则该lambda表达式
 可以使用Method Reference表达，以下两种方式是等价的：
 ```java
@@ -79,6 +80,9 @@ Math::pow
 String::compareToIgnoreCase
 (s1, s2) -> s1.compareToIgnoreCase(s2)
 ```
+
+Constructor Reference
+---
 使用Constructor Reference:
 Constructor Reference与Method Reference类似，只不过是特殊的method：new，具体调用的是哪个构造函数，由上下文环境决定，比如：
 ```
@@ -91,7 +95,50 @@ Button::new等价于(x) -> Button(x)，所以调用的构造函数是：Button(x
 int[]::new
 (x) -> new int[x]
 ```
+变量作用域
+---
+lambd表达式会捕获当前作用域下可用的变量，比如：
+```
+public void repeatMessage(String text, int count) {
+  Runnable r = () -> {
+    for (int i = 0; i < count; i ++) {
+      System.out.println(text);
+      Thread.yield();
+    }
+  };
+  new Thread(r).start();
+}
+```
+但是这些变量必须是不可变的，为什么呢？看下面这个例子：
+```
+int matches = 0;
+for (Path p : files)
+  new Thread(() -> { if (p has some property) matches++; }).start(); 
+  // Illegal to mutate matches
+```
+因为可变的变量在lambda表达式中不是线程安全的，这和内部类的要求是一致的，内部类中只能引用
+外部定义的final变量；
 
+lambda表达式的作用域与嵌套代码块的作用域是一样的，所以在lambd表达式中的参数名或变量名不
+能与局部变量冲突.
+
+如果在lambda表达式中引用this变量，则引用的是创建该lambda表达式的方法的this变量，如：
+```
+public class Application() {
+  public void doWork() {
+    Runnable runner = () -> {
+      ...;
+      System.out.println(this.toString());
+      ...
+    };
+  }
+}
+```
+所以这里的this.toString()调用的是Application对象的toString()，而不是Runnable对象的。
+
+
+函数式接口
+---
 
 函数式接口（Functional Interface）:
 所谓的函数式接口，当然首先是一个接口，然后就是在这个接口里面只能有一个抽象方法。这种类型的接口也称为SAM接口，即Single Abstract Method interfaces.
