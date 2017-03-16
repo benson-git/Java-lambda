@@ -49,92 +49,92 @@ public class Lambda {
 }
 ```
 java.util.function 它包含了很多类，用来支持 Java的 函数式编程，该包中的函数式接口有：
-序号	接口 & 描述
-1	BiConsumer<T,U>
+
++ BiConsumer<T,U>
 代表了一个接受两个输入参数的操作，并且不返回任何结果
-2	BiFunction<T,U,R>
++ BiFunction<T,U,R>
 代表了一个接受两个输入参数的方法，并且返回一个结果
-3	BinaryOperator<T>
++ BinaryOperator<T>
 代表了一个作用于于两个同类型操作符的操作，并且返回了操作符同类型的结果
-4	BiPredicate<T,U>
++ BiPredicate<T,U>
 代表了一个两个参数的boolean值方法
-5	BooleanSupplier
++ BooleanSupplier
 代表了boolean值结果的提供方
-6	Consumer<T>
++ Consumer<T>
 代表了接受一个输入参数并且无返回的操作
-7	DoubleBinaryOperator
++ DoubleBinaryOperator
 代表了作用于两个double值操作符的操作，并且返回了一个double值的结果。
-8	DoubleConsumer
++ DoubleConsumer
 代表一个接受double值参数的操作，并且不返回结果。
-9	DoubleFunction<R>
++ DoubleFunction<R>
 代表接受一个double值参数的方法，并且返回结果
-10	DoublePredicate
++ DoublePredicate
 代表一个拥有double值参数的boolean值方法
-11	DoubleSupplier
++ DoubleSupplier
 代表一个double值结构的提供方
-12	DoubleToIntFunction
++ DoubleToIntFunction
 接受一个double类型输入，返回一个int类型结果。
-13	DoubleToLongFunction
++ DoubleToLongFunction
 接受一个double类型输入，返回一个long类型结果
-14	DoubleUnaryOperator
++ DoubleUnaryOperator
 接受一个参数同为类型double,返回值类型也为double 。
-15	Function<T,R>
++ Function<T,R>
 接受一个输入参数，返回一个结果。
-16	IntBinaryOperator
++ IntBinaryOperator
 接受两个参数同为类型int,返回值类型也为int 。
-17	IntConsumer
++ IntConsumer
 接受一个int类型的输入参数，无返回值 。
-18	IntFunction<R>
++ IntFunction<R>
 接受一个int类型输入参数，返回一个结果 。
-19	IntPredicate
++ IntPredicate
 ：接受一个int输入参数，返回一个布尔值的结果。
-20	IntSupplier
++ IntSupplier
 无参数，返回一个int类型结果。
-21	IntToDoubleFunction
++ IntToDoubleFunction
 接受一个int类型输入，返回一个double类型结果 。
-22	IntToLongFunction
++ IntToLongFunction
 接受一个int类型输入，返回一个long类型结果。
-23	IntUnaryOperator
++ IntUnaryOperator
 接受一个参数同为类型int,返回值类型也为int 。
-24	LongBinaryOperator
++ LongBinaryOperator
 接受两个参数同为类型long,返回值类型也为long。
-25	LongConsumer
++ LongConsumer
 接受一个long类型的输入参数，无返回值。
-26	LongFunction<R>
++ LongFunction<R>
 接受一个long类型输入参数，返回一个结果。
-27	LongPredicate
++ LongPredicate
 R接受一个long输入参数，返回一个布尔值类型结果。
-28	LongSupplier
++ LongSupplier
 无参数，返回一个结果long类型的值。
-29	LongToDoubleFunction
++ LongToDoubleFunction
 接受一个long类型输入，返回一个double类型结果。
-30	LongToIntFunction
++ LongToIntFunction
 接受一个long类型输入，返回一个int类型结果。
-31	LongUnaryOperator
++ LongUnaryOperator
 接受一个参数同为类型long,返回值类型也为long。
-32	ObjDoubleConsumer<T>
++ ObjDoubleConsumer<T>
 接受一个object类型和一个double类型的输入参数，无返回值。
-33	ObjIntConsumer<T>
++ ObjIntConsumer<T>
 接受一个object类型和一个int类型的输入参数，无返回值。
-34	ObjLongConsumer<T>
++ ObjLongConsumer<T>
 接受一个object类型和一个long类型的输入参数，无返回值。
-35	Predicate<T>
++ Predicate<T>
 接受一个输入参数，返回一个布尔值结果。
-36	Supplier<T>
++ Supplier<T>
 无参数，返回一个结果。
-37	ToDoubleBiFunction<T,U>
++ ToDoubleBiFunction<T,U>
 接受两个输入参数，返回一个double类型结果
-38	ToDoubleFunction<T>
++ ToDoubleFunction<T>
 接受一个输入参数，返回一个double类型结果
-39	ToIntBiFunction<T,U>
++ ToIntBiFunction<T,U>
 接受两个输入参数，返回一个int类型结果。
-40	ToIntFunction<T>
++ ToIntFunction<T>
 接受一个输入参数，返回一个int类型结果。
-41	ToLongBiFunction<T,U>
++ ToLongBiFunction<T,U>
 接受两个输入参数，返回一个long类型结果。
-42	ToLongFunction<T>
++ ToLongFunction<T>
 接受一个输入参数，返回一个long类型结果。
-43	UnaryOperator<T>
++ UnaryOperator<T>
 接受一个参数为类型T,返回值类型也为T。
 
 
